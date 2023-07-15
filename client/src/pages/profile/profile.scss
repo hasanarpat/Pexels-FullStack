@@ -1,0 +1,141 @@
+.profile{
+    
+    .container{
+        height: calc(100dvh - 100px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+        .user{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 50px;
+
+            h1{
+                font-size: 48px;
+                line-height: 32px;
+                margin-bottom: 0;
+                margin-top: 10px;
+            }
+            img{
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 20px;
+            }
+            button{
+                cursor: pointer;
+                border: none;
+                display: flex;align-items: center;
+                gap: 10px;
+                padding: 12px 20px;
+                font-size: 18px;
+                border-radius: 8px;
+                font-weight: 500;
+                background-color:#1ea086;
+                color: white;
+            }
+
+            .counts{
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                .count{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 60px;
+
+                    span{
+                        b{
+                            font-size: 24px;
+                            font-weight: 400;
+                        }
+                    }
+
+                    span:first-child{
+                        color: #9a9a9a;
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .statistics{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                .items{
+                    display: flex;
+                    align-items: center;
+
+                    .item{
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        padding: 10px 16px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        &:nth-child(2){
+                            background-color: #000;
+                            color: white;
+                        }
+                        span{
+                            font-size: 18px;
+                            font-weight: 500;
+
+                            &:last-child{
+                                color: #9f9f9f;
+                            }
+                        }
+
+                    }
+                }
+                .itemsBorder{
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    
+                    .itemBorder{
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                        height: 28px;
+                        padding: 12px 30px;
+                        border: 0.5px solid lightgray;
+                        border-radius: 8px;
+                        font-size: 16px;
+                        font-weight: 600;
+
+                        &:first-child{
+                            position: relative;
+                            :last-child{
+                                position: absolute;
+                                top: -8px;
+                                left: 20px;
+                                font-style: italic;
+                                font-size: 14px;
+                                color: #1ea086;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            h1{
+                margin: 0;
+            }
+        }
+    }
+}
