@@ -4,11 +4,24 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { useEffect, useState } from "react";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
+import {auth} from "../../firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 
 const Register = () => {
 
   const [data,setData] = useState()
   console.log(data)
+
+  const navigate = useNavigate()
+
+  const [form,setForm] = useState({
+    name:"",
+    surname:"",
+    email:"",
+    password:"",
+  })
 
   useEffect(()=>{
     const getData = async ()=>{
@@ -16,6 +29,29 @@ const Register = () => {
     }
     getData()
   },[])
+
+  const handleChange = (e)=>{
+
+    setForm((prev)=>({...prev, [e.target.name]:e.target.value}))
+    console.log(form)
+  }
+
+  const onSubmit = ()=>{
+    createUserWithEmailAndPassword(auth, form.email, form.password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      navigate("/login")
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+    
+  }
 
   return (
     <div className="register">
@@ -51,22 +87,22 @@ const Register = () => {
             <div className="formGroup">
               <div className="formItem">
                 <label>Ad</label>
-                <input required type="text" />
+                <input required type="text" name="name" onChange={handleChange}/>
               </div>
               <div className="formItem">
                 <label>Soyad</label>
-                <input required type="text" />
+                <input required type="text" name="surname" onChange={handleChange}/>
               </div>
             </div>
             <div className="formItem">
               <label>E-Posta</label>
-              <input required type="email" />
+              <input required type="email" name="email" onChange={handleChange}/>
             </div>
             <div className="formItem">
               <label>Şifre</label>
-              <input required type="password" />
+              <input required type="password" name="password" onChange={handleChange}/>
             </div>
-            <button className="formButton">Hesap oluştur</button>
+            <button className="formButton" type="submit" onClick={onSubmit}>Hesap oluştur</button>
           </form>
           <p className="services">
             Kaydolarak Hizmet Şartlarımızı ve Gizlilik Politikamızı kabul etmiş
