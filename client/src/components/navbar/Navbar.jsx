@@ -3,7 +3,7 @@ import Logo from "../../images/Pexels_logo.png";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
@@ -16,23 +16,39 @@ const Navbar = () => {
   console.log(path);
 
   const [open, setOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
+
   const handleClick = () => {
     setOpen(true);
   };
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+
+    if (scrollY > 500) {
+      setSticky(true);
+      console.log(scrollY);
+    } else if (scrollY < 500) {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div
-      className="navbar"
-      style={{
-        backgroundColor: `${path === "register" ? "white" : "transparent"}`,
-      }}
-    >
+      className={sticky || path==="register" ? "navbar-sticky" : "navbar"} style={{/*backgroundColor:`${path === undefined && !sticky ? "transparent" : "inherit"}` */}}>
       <div className="container">
         <div className="logo">
           <Link to="/" className="link">
             <img alt="logo" src={Logo} />
           </Link>
         </div>
-        <div className="searchBar">
+        <div className="searchBar" style={{
+        display: `${path === undefined ? "none" : "flex"}`,
+      }}>
           <div className="left">
             <ImageOutlinedIcon className="imgIcon" />
             <span>Fotoğraflar</span>
@@ -70,6 +86,7 @@ const Navbar = () => {
           {path === "onboarding" || path === "register" ? (
             <MoreHorizOutlinedIcon />
           ) : (
+            <Link to="/profile" className="link">
             <div className="user">
               <img
                 src="https://images.pexels.com/photos/17037103/pexels-photo-17037103/free-photo-of-moda-insanlar-kadin-fotografcilik.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
@@ -77,6 +94,7 @@ const Navbar = () => {
               />
               <ArrowDropDownIcon />
             </div>
+            </Link>
           )}
           <button className="upload">
             <Link to="/login" className="link">

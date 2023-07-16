@@ -81,7 +81,7 @@ const Profile = () => {
         </div>
         <div className="content">
           <h1>
-            hasan adlı kullanıcının henüz hiç fotoğraf veya videosu yok 😔
+            Jane adlı kullanıcının henüz hiç fotoğraf veya videosu yok 😔
           </h1>
         </div>
       </div>

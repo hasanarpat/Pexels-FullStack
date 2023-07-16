@@ -1,0 +1,29 @@
+.homeselect{
+    width: 100%;
+    
+    .container{
+        width: 50%;
+        margin: auto;
+        padding: 30px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+            button{
+                cursor: pointer;
+                border: none;
+                border-radius: 30px;
+                height: 50px;
+                padding: 0px 20px;
+                font-size: 18px;
+                font-weight: 500;
+                background-color: transparent;
+
+                &:first-child{
+                    background-color: black;
+                    color: #fff;
+                }
+            }
+
+    }
+}
