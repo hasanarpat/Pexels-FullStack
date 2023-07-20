@@ -81,7 +81,10 @@ const Navbar = () => {
               <button>Yükle</button>
             </Link>
           ) : (
-            <NotificationsNoneIcon />
+            <div className="notification">
+            <div className="notificationCount">5</div>
+            <NotificationsNoneIcon style={{width:26,height:26}}/>
+            </div>
           )}
           {path === "onboarding" || path === "register" ? (
             <MoreHorizOutlinedIcon />

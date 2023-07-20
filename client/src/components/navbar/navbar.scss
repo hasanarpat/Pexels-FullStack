@@ -83,6 +83,24 @@
         }
       }
 
+      .notification{
+        position: relative;
+        
+        .notificationCount{
+          background: red;
+          color: white;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          font-size: 14px;
+        }
+      }
+
       button {
         cursor: pointer;
         background-color: transparent;
@@ -104,7 +122,7 @@
         height: 50px;
 
         &:hover{
-          border: 1px solid lightgray;
+        background-color: #149b80;
         }
       }
     }
@@ -118,5 +136,5 @@
   right: 0;
   margin: auto;
   background-color: #fff;
-  transition: linear 100ms;
+  transition: ease-out 300ms;
 }

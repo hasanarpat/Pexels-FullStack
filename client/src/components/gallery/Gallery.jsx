@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "./gallery.scss";
 import axios from "axios";
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';import FavoriteIcon from "@mui/icons-material/Favorite";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
 
 const Gallery = () => {
   const [curatedPhotos, setCuratedPhotos] = useState([]);
@@ -17,6 +18,24 @@ const Gallery = () => {
     const fetchCuratedPhotos = async () => {
       await axios
         .get("http://localhost:3000/curated")
+        .catch(function (error) {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
+        })
         .then((res) => setCuratedPhotos(res.data.photos.reverse()));
     };
     fetchCuratedPhotos();
@@ -24,11 +43,11 @@ const Gallery = () => {
 
   const handleBookmark = () => {
     //dummy logic for bookmarking
-    setBookMark((prev)=>!prev);
+    setBookMark((prev) => !prev);
   };
   const handleLike = () => {
     //dummy logic for liking
-    setLiked((prev)=>!prev);
+    setLiked((prev) => !prev);
   };
 
   console.log(curatedPhotos);
@@ -48,22 +67,22 @@ const Gallery = () => {
             {curatedPhotos?.map((photo) => (
               <div className="photo" key={photo.id}>
                 <div className="imgDiv">
-                  <img alt="" src={photo?.src?.medium} className="img" />
+                  <img alt="" src={photo?.src?.large2x} className="img" />
                 </div>
                 <div className="hoverObjects">
                   <div className="top">
                     <div className="item" onClick={handleBookmark}>
-                    {bookMark ? <BookmarksIcon /> : <BookmarkBorderIcon />}
+                      {bookMark ? <BookmarksIcon /> : <BookmarkBorderIcon />}
                     </div>
                     <div className="item" onClick={handleLike}>
                       {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </div>
                   </div>
                   <div className="bottom">
-                  <div className="artist">
-                    <img alt="artist" src={photo?.src.tiny}/>
-                  <span>{photo?.photographer}</span>
-                  </div>
+                    <div className="artist">
+                      <img alt="artist" src={photo?.src.tiny} />
+                      <span>{photo?.photographer}</span>
+                    </div>
                     <div className="item">
                       <FileDownloadOutlinedIcon />
                     </div>

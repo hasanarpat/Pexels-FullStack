@@ -8,10 +8,10 @@ const Profile = () => {
       <div className="container">
         <div className="user">
           <img
-            src="https://images.pexels.com/photos/1021756/pexels-photo-1021756.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="https://images.pexels.com/photos/17037103/pexels-photo-17037103/free-photo-of-moda-insanlar-kadin-fotografcilik.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
             alt=""
           />
-          <h1>John Doe</h1>
+          <h1>Jane Doe</h1>
           <button>
             <EditOutlinedIcon />
             Profili Düzenle
