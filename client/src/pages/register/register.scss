@@ -6,11 +6,12 @@
         .left{
             flex:7;
             padding: 0 70px;
+            margin-top: 30px;
 
             h1{
                 width: 60%;
                 margin: auto;
-                font-size: 48px;
+                font-size: 36px;
                 font-weight: 600;
                 line-height: 60px;
                 text-align: center;
@@ -70,7 +71,7 @@
                 font-size: 18px;
                 font-weight: 500;
                 color:#9a9a9a;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
                 display: flex;
                 align-items: center;
                 
@@ -86,7 +87,7 @@
             form{
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
                 width: 70%;
                 margin: auto;
 
@@ -140,7 +141,7 @@
             
             .row{
                 position: absolute;
-                top: -110px;
+                top: -50px;
                 z-index: -1;
                 display: flex;
                 flex-direction: row;              
